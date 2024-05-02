@@ -232,16 +232,16 @@ public class InventoryClickListener implements Listener {
                     final int slot = event.getSlot();
                     final ShopItem clickedShopItem = ShopPlugin.getPlugin().getShopService().getShop().getShopItemStacks().get(slot);
 
+                    if(clickedShopItem == null) return;
+
                     if (event.getClick() == ClickType.RIGHT) {
                         new ShopEditInventory(player, clickedShopItem).open();
                         return;
                     }
 
-                    if (clickedShopItem != null) {
-                        ShopPlugin.getPlugin().getShopService().getShop().getShopItemStacks().remove(slot);
-                        event.getClickedInventory().setItem(slot, null);
-                        player.getInventory().addItem(new ItemStack(Utility.decode(clickedShopItem.getItemStackRaw())));
-                    }
+                    ShopPlugin.getPlugin().getShopService().getShop().getShopItemStacks().remove(slot);
+                    event.getClickedInventory().setItem(slot, null);
+                    player.getInventory().addItem(new ItemStack(Utility.decode(clickedShopItem.getItemStackRaw())));
 
                 } else if (event.getClickedInventory().equals(event.getView().getBottomInventory()) && event.getClick() == ClickType.LEFT) {
 

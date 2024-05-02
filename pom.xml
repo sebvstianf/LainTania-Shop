@@ -29,11 +29,6 @@
             <id>ranull-repo-external</id>
             <url>https://repo.ranull.com/maven/external/</url>
         </repository>
-        <repository>
-            <id>opencollab-snapshot</id>
-            <url>https://repo.opencollab.dev/main/</url>
-        </repository>
-        <!-- other repos... -->
     </repositories>
 
     <dependencies>

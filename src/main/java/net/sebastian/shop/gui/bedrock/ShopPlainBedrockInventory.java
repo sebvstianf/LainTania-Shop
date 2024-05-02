@@ -20,12 +20,10 @@ public class ShopPlainBedrockInventory {
 
     private final Player player;
     private final Inventory inventory;
-    private final AtomicInteger slotCounter;
 
     public ShopPlainBedrockInventory(final Player player) {
         this.player = player;
         this.inventory = Bukkit.createInventory(null, 54, Component.text(String.format(ShopPlugin.getPlugin().getInventoryTitle(), "B-Startseite")));
-        this.slotCounter = new AtomicInteger(0);
 
         Utility.fillInventory(inventory, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).name(Component.text("§r")));
 
@@ -41,7 +39,7 @@ public class ShopPlainBedrockInventory {
                             Component.text("§a<Linksklicke um das Menü zu öffnen>"),
                             Component.text("")
                     );
-            this.inventory.setItem(this.slotCounter.getAndIncrement(), itemStack);
+            this.inventory.setItem(integer, itemStack);
         });
 
 

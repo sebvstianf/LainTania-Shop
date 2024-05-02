@@ -20,7 +20,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.geysermc.api.Geyser;
 
 import java.text.NumberFormat;
 import java.util.HashMap;
