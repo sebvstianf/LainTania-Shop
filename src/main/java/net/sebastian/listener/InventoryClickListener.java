@@ -232,7 +232,7 @@ public class InventoryClickListener implements Listener {
                     final int slot = event.getSlot();
                     final ShopItem clickedShopItem = ShopPlugin.getPlugin().getShopService().getShop().getShopItemStacks().get(slot);
 
-                    if(clickedShopItem == null) return;
+                    if (clickedShopItem == null) return;
 
                     if (event.getClick() == ClickType.RIGHT) {
                         new ShopEditInventory(player, clickedShopItem).open();

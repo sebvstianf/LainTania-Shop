@@ -16,7 +16,7 @@ import java.util.HashMap;
 @Log
 public class ShopService {
 
-    private final ShopRepository shopRepository;
+    private final ShopRepository repository;
     private final String shopIdentifier = "Shop-One";
     /**
      * Map that stores the ShopItem for #ShopBuyInventory & InventoryClickListener
@@ -34,15 +34,15 @@ public class ShopService {
     public ShopService() {
         this.confirmBuy = new HashMap<>();
         this.modifyItem = new HashMap<>();
-        this.shopRepository = ShopPlugin.getPlugin().getMongoService().getMongoManager().create(ShopRepository.class);
+        this.repository = ShopPlugin.getPlugin().getMongoService().getMongoManager().create(ShopRepository.class);
         this.setup();
     }
 
 
-    public void setup() {
-        Shop existingShop = this.shopRepository.findFirstById(this.shopIdentifier);
+    private void setup() {
+        Shop existingShop = this.repository.findFirstById(this.shopIdentifier);
         if (existingShop == null) {
-            log.info("Creating new shop with dummy items!");
+            log.info("Creating new shop!");
             this.shop = new Shop(this.shopIdentifier, new HashMap<>());
         } else {
             log.info("Existing shop found. Loading...");
@@ -51,7 +51,7 @@ public class ShopService {
     }
 
     public void save() {
-        this.shopRepository.save(this.shop);
+        this.repository.save(this.shop);
         log.info("Saved Shop with " + this.shop.getShopItemStacks().size() + " Items.");
     }
 

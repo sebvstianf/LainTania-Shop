@@ -24,6 +24,7 @@ public class Utility {
             inventory.setItem(i, itemStack);
         }
     }
+
     public int findAvailableSlot(Map<Integer, ShopItem> shopItems) {
         int newSlot = 0;
         while (shopItems.containsKey(newSlot)) {
