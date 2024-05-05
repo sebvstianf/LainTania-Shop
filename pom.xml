@@ -47,9 +47,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>eu.koboo</groupId>
+            <groupId>eu.koboo.en2do</groupId>
             <artifactId>en2do</artifactId>
-            <version>2.3.9</version>
+            <version>3.1.8</version>
         </dependency>
         <dependency>
             <groupId>dev.sergiferry</groupId>

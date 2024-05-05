@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import net.sebastian.ShopPlugin;
 import net.sebastian.shop.model.Shop;
-import net.sebastian.shop.model.ShopRepository;
 import net.sebastian.shop.model.item.ShopItem;
 import org.bukkit.entity.Player;
 
@@ -14,6 +13,7 @@ import java.util.HashMap;
  * Copyright @ 2024 ~ LainTania-Shop
  */
 @Log
+@Getter
 public class ShopService {
 
     private final ShopRepository repository;
@@ -21,20 +21,17 @@ public class ShopService {
     /**
      * Map that stores the ShopItem for #ShopBuyInventory & InventoryClickListener
      */
-    @Getter
     private final HashMap<Player, ShopItem> confirmBuy;
     /**
      * Map that stores the Shopitem for #ShopEditInventory & InventoryClickListener
      */
-    @Getter
     private final HashMap<Player, ShopItem> modifyItem;
-    @Getter
     private Shop shop;
 
     public ShopService() {
         this.confirmBuy = new HashMap<>();
         this.modifyItem = new HashMap<>();
-        this.repository = ShopPlugin.getPlugin().getMongoService().getMongoManager().create(ShopRepository.class);
+        this.repository = ShopPlugin.getPlugin().getMongoManager().create(ShopRepository.class);
         this.setup();
     }
 

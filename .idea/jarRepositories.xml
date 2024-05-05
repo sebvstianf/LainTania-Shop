@@ -12,6 +12,16 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="spigotmc-snapshots" />
+      <option name="name" value="spigotmc-snapshots" />
+      <option name="url" value="https://hub.spigotmc.org/nexus/content/repositories/snapshots/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="spigot-repo" />
+      <option name="name" value="spigot-repo" />
+      <option name="url" value="https://hub.spigotmc.org/nexus/content/repositories/snapshots/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="opencollab-snapshot" />
       <option name="name" value="opencollab-snapshot" />
       <option name="url" value="https://repo.opencollab.dev/main/" />

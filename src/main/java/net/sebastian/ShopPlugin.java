@@ -2,12 +2,13 @@ package net.sebastian;
 
 import dev.sergiferry.playernpc.api.NPC;
 import dev.sergiferry.playernpc.api.NPCLib;
+import eu.koboo.en2do.Credentials;
+import eu.koboo.en2do.MongoManager;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import net.kyori.adventure.text.Component;
 import net.sebastian.command.BedrockDebugCommand;
-import net.sebastian.database.MongoService;
 import net.sebastian.listener.InventoryClickListener;
 import net.sebastian.listener.PlayerJoinListener;
 import net.sebastian.listener.PlayerQuitListener;
@@ -30,24 +31,19 @@ import java.util.UUID;
  * Copyright @ 2024 ~ LainTania-Shop
  */
 @Log
+@Getter
 public class ShopPlugin extends JavaPlugin {
 
     @Getter
     private static ShopPlugin plugin;
-    @Getter
     private final String inventoryTitle = "§eShop: §7%s";
-    @Getter
     private final String permission = "shop.admin";
-    @Getter
     private Map<UUID, Long> userBalance;
-    @Getter
-    private MongoService mongoService;
-    @Getter
+    private MongoManager mongoManager;
     private ShopService shopService;
     /**
      * temporary boolean to debug bedrock guis
      */
-    @Getter
     @Setter
     private boolean debugBedrock = false;
 
@@ -56,7 +52,7 @@ public class ShopPlugin extends JavaPlugin {
         plugin = this;
 
         this.userBalance = new HashMap<>();
-        this.mongoService = new MongoService();
+        this.mongoManager = new MongoManager(Credentials.of("mongodb://localhost:27017", "Shop"));
         this.shopService = new ShopService();
 
         Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), this);
